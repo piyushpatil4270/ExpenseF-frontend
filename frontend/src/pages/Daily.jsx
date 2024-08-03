@@ -32,7 +32,7 @@ const Income = () => {
       setaddExp(false);
       const userToken = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5500/expense/add",
+        "https://www.expensetracker.kesug.com/expense/add",
         {
           category: category,
           amount: amount,
@@ -52,7 +52,7 @@ const Income = () => {
     try {
       const userToken = localStorage.getItem("token");
       const res = await axios.post(
-        `http://localhost:5500/expense/delete/${id}`,
+        `https://www.expensetracker.kesug.com/expense/delete/${id}`,
         {},
         {
           headers: { Authorization: userToken },
@@ -77,7 +77,7 @@ const Income = () => {
     try {
       const userToken = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5500/expense/all",
+        "https://www.expensetracker.kesug.com/expense/all",
         {
           date: selectedDate,
           limit: itemsPerPage,

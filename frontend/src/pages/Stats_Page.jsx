@@ -6,7 +6,7 @@ const Stats_Page = () => {
     const [data,setdata]=useState([])
     const fetchLeaderboard=async()=>{
         try {
-            const res=await axios.get("http://localhost:5500/premium/leaderboard")
+            const res=await axios.get("http://www.expensetracker.kesug.com/premium/leaderboard")
             setdata(res.data)
         } catch (error) {
             console.log(error)

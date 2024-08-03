@@ -36,7 +36,7 @@ const ExpenseTable = () => {
   const getStats = async () => {
     try {
       const userToken = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5500/expense/getStat", {
+      const res = await axios.get("http://www.expensetracker.kesug.com/expense/getStat", {
         headers: { Authorization: userToken },
       });
       setMonthlyStats(res.data.Montlyexpenses);

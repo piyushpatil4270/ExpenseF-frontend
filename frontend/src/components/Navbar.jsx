@@ -9,7 +9,7 @@ const Navbar = ({isPremium,setPremium}) => {
   const checkUser=async()=>{
     try {
       const userToken=localStorage.getItem("token")
-      const res=await axios.get("http://localhost:5500/premium/user",{headers:{"Authorization":userToken}})
+      const res=await axios.get("http://www.expensetracker.kesug.com/premium/user",{headers:{"Authorization":userToken}})
       setLoading(true)
       console.log(res.data)
       setLoading(false)

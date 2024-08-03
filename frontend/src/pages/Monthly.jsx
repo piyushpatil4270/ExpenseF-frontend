@@ -13,7 +13,7 @@ const Monthly = () => {
   const getExpenses=async()=>{
     try {
       const userToken=localStorage.getItem("token")
-    const res=await axios.post("http://localhost:5500/expense/getbyMonth",{month:currMonth,limit:itemsPerPage,page:currPage},{
+    const res=await axios.post("http://www.expensetracker.kesug.com/expense/getbyMonth",{month:currMonth,limit:itemsPerPage,page:currPage},{
       headers:{'Authorization':userToken}
     })
     if(res.data.expenses)setExpenses(res.data.expenses)
