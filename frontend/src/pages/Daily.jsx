@@ -231,7 +231,10 @@ const Income = () => {
                 </span>
                 <select
                   className="flex-1 outline-none p-2 border border-gray-300 rounded-md"
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => {
+                    console.log(e.target.value)
+                    setCategory(e.target.value)
+                  }}
                 >
                   <option value="">Select Category</option>
                   <option value="food">Food</option>
