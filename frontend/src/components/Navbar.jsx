@@ -40,7 +40,7 @@ const Navbar = ({isPremium,setPremium}) => {
          </div>
         </div>
         <div className='w-full flex justify-evenly items-center gap-4 xs:my-2 my-1'>
-          <Link to={"/daily"}>
+          <Link to={"/"}>
           <span className={`text-white xs:text-[13px] sm:text-[15px] border-0 ${pathName==='/daily' && `xs:border-b-2 p-1 border-white`}`}>Daily</span>
           </Link>
           <Link to={"/monthly"}>

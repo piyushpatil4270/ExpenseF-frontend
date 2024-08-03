@@ -13,7 +13,7 @@ const Monthly = () => {
   const getExpenses=async()=>{
     try {
       const userToken=localStorage.getItem("token")
-    const res=await axios.post("http://www.expensetracker.kesug.com/expense/getbyMonth",{month:currMonth,limit:itemsPerPage,page:currPage},{
+    const res=await axios.post("https://www.expensetracker.kesug.com/expense/getbyMonth",{month:currMonth,limit:itemsPerPage,page:currPage},{
       headers:{'Authorization':userToken}
     })
     if(res.data.expenses)setExpenses(res.data.expenses)
@@ -39,14 +39,12 @@ const Monthly = () => {
   },[currMonth,currPage,itemsPerPage])
   return (
     <div className='flex flex-col items-center justify-center gap-2'>
-      <div className="flex justify-between items-center p-2 w-full">
-      <div className="flex justify-center items-center w-[90%]">
+      <div className="flex justify-center items-center my-2 p-2 w-full">
+      <div className="flex justify-center items-center  w-[80%]  m-2">
       <Month_Cal currMonth={currMonth} setCurrMonth={setCurrMonth} />
       </div>
-        
-        <div class="xs:p-1 sm:p-4 flex items-center gap-2 justify-between">
-          <span className="text-[12px]">Rows Per Page</span>
-          <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px]" onChange={handleRows} >
+      <span className="text-[12px]">Rows Per Page</span>
+          <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px]" onChange={""}>
             <option value="5" >5</option>
             <option value="10" >10</option>
             <option value="15" >15</option>
@@ -54,7 +52,7 @@ const Monthly = () => {
             <option value="25" >25</option>
           </select>
         </div>
-        </div>
+    
      
      {expenses.map((expense)=>{
       const newDate=moment.utc(expense.date).format("YYYY-MM-DD")

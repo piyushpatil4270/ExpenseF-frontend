@@ -36,7 +36,7 @@ const ExpenseTable = () => {
   const getStats = async () => {
     try {
       const userToken = localStorage.getItem("token");
-      const res = await axios.get("http://www.expensetracker.kesug.com/expense/getStat", {
+      const res = await axios.get("https://www.expensetracker.kesug.com/expense/getStat", {
         headers: { Authorization: userToken },
       });
       setMonthlyStats(res.data.Montlyexpenses);
@@ -62,7 +62,7 @@ const ExpenseTable = () => {
           {Object.entries(monthlyStats).map(([month, expenses]) => (
             <div key={month} className="w-full flex flex-col items-center justify-center mb-4">
               <span className="text-center xs:text=[8px] sm:text-[14px] m-1  font-semibold">{month}</span>
-              <Detail_Box expenses={expenses} />
+              <Detail_Box premium={isPremium} expenses={expenses} />
             </div>
           ))}
         </table>
@@ -82,10 +82,10 @@ const ExpenseTable = () => {
         <table ref={tableRef2} className="w-full border-collapse table-auto">
           <thead className="w-full">
             <tr className="bg-gray-200 w-full">
-              <th className="p-2 border text-black bg-cyan-300 text-center xs:text-[13px] sm:text-[15px]">
+              <th className="p-2 border text-black bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
                 Month
               </th>
-              <th className="p-2 border text-black bg-cyan-300 text-center xs:text-[13px] sm:text-[15px]">
+              <th className="p-2 border text-black bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
                 Expenses
               </th>
             </tr>

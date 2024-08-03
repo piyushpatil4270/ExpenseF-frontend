@@ -14,7 +14,7 @@ const SignUp = ({setIsAuth}) => {
         localStorage.setItem('token',res.data.token)
         if(res.status===202){
           setIsAuth(true)
-          navigate("/daily")
+          navigate("/")
         }
     } catch (error) {
        if(error.response && (error.response.status === 404))alert("Incorrect Password")

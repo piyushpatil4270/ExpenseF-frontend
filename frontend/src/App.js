@@ -26,7 +26,7 @@ function App() {
           <Navbar isPremium={isPremium} setPremium={setPremium} />
           <div className="flex-grow m-2 w-auto h-full bg-slate-100">
             <Routes>
-              <Route path="/daily" element={<Main />} />
+              <Route path="/" element={<Main />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/yearly" element={<Yearly />} />
               <Route path="/premium" element={<Payment_form  isPremium={isPremium} setPremium={setPremium}/> } />

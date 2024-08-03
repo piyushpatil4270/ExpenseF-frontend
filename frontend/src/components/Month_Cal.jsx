@@ -14,10 +14,10 @@ const SlidingDatePicker = ({currMonth,setCurrMonth}) => {
    
 
     return (
-        <div className="p-[4px] flex items-center justify-center gap-4 bg-gray-100 border border-gray-300 rounded-md shadow-md">
-            <span className="text-[18px] font-semibold cursor-pointer text-black" onClick={()=>handlePreviousMonth()}>{'<'}</span>
-            <span className="text-[15px] font-semibold text-black">{moment(currMonth).utc().format('MMMM YYYY')}</span>
-            <span className={`text-[18px] cursor-pointer font-semibold text-black`} onClick={()=>{
+        <div className="p-[4px] w-full flex items-center justify-center gap-4 bg-[#6ed9e2] my-2 border border-gray-300 rounded-md shadow-md">
+            <span className="text-[18px] font-semibold cursor-pointer text-white" onClick={()=>handlePreviousMonth()}>{'<'}</span>
+            <span className="text-[15px] font-semibold text-white">{moment(currMonth).utc().format('MMMM YYYY')}</span>
+            <span className={`text-[18px] cursor-pointer font-semibold text-white`} onClick={()=>{
                handleNextMonth()
             }}>{'>'}</span>
             

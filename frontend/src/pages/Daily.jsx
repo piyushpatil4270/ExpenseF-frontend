@@ -97,27 +97,25 @@ const Income = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     localStorage.removeItem("perpage")
     localStorage.setItem("perpage",itemsPerPage)
     fetchExpenses();
     console.log("The current date is ", selectedDate);
   }, [selectedDate, currPage,itemsPerPage]);
-
   return (
     <div className="w-full h-full flex flex-col gap-4 mt-2 justify-center items-center hide-scrollbar">
       {/*showCal?<Calender onClick={()=>setShowCal(!showCal)}/>:<span className="text-black p-2" onClick={()=>setShowCal(!showCal)}>Choose Date</span>*/}
-      <div className="flex justify-between items-center p-2 w-full">
-        <div className="flex justify-center items-center w-[90%]">
+      <div className="flex justify-center  items-center my-2 p-2 w-full">
+        <div className="flex justify-center items-center w-[80%] m-2">
         <Calender
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
         </div>
         
-        <div class="xs:p-1 sm:p-4 flex items-center gap-2 justify-between">
-          <span className="text-[12px]">Rows Per Page</span>
+         {/*<div class="xs:p-1 sm:p-4 flex items-center gap-2 justify-between">
+         {/*<span className="text-[12px]">Rows Per Page</span>
           <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px]" onChange={handleItemsCount}>
             <option value="5" >5</option>
             <option value="10" >10</option>
@@ -125,9 +123,19 @@ const Income = () => {
             <option value="20"  >20</option>
             <option value="25" >25</option>
           </select>
-        </div>
+        </div>*/}
+       {/*<div class="xs:p-2 sm:p-4 flex items-center gap-1 justify-center">*/}
+         <span className="text-[12px]">Rows Per Page</span>
+          <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px] " onChange={handleItemsCount}>
+            <option value="5" >5</option>
+            <option value="10" >10</option>
+            <option value="15" >15</option>
+            <option value="20"  >20</option>
+            <option value="25" >25</option>
+          </select>
+        {/*</div>*/}
       </div>
-
+      
       <div className="flex flex-col items-center w-full px-4 py-4 gap-4">
         <div className="w-full flex justify-between bg-slate-300">
           <span className="m-1 text-black xs:text-[14px] sm:text-[18px]">
@@ -137,6 +145,7 @@ const Income = () => {
             ${totalAmt}
           </span>
         </div>
+        
         {data &&
           data?.map((expense) => {
             return (
