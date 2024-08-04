@@ -8,7 +8,7 @@ const SignUp = ({setIsAuth}) => {
   const navigate=useNavigate()
   const handleLogin=async()=>{
     try {
-        const res=await axios.post("https://www.expensetracker.kesug.com/auth/login",{email:email,password:pass})
+        const res=await axios.post("https://www.expensetracker.kesug.com/auth/signin",{email:email,password:pass})
         console.log(res.data)
         alert(res.data.msg)
         localStorage.setItem('token',res.data.token)
