@@ -12,7 +12,7 @@ const SignUp = ({setIsAuth}) => {
         console.log(res.data)
         alert(res.data.msg)
         localStorage.setItem('token',res.data.token)
-        if(res.status===202){
+        if(res.status===200){
           setIsAuth(true)
           navigate("/")
         }
