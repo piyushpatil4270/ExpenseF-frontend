@@ -44,7 +44,7 @@ const Monthly = () => {
       <Month_Cal currMonth={currMonth} setCurrMonth={setCurrMonth} />
       </div>
       <span className="text-[12px]">Rows Per Page</span>
-          <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px]" onChange={""}>
+          <select class="bg-white border border-gray-300 text-gray-700 py-1 px-1  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 xs:text-[12px] sm:text-[16px]" onChange={handleRows}>
             <option value="5" >5</option>
             <option value="10" >10</option>
             <option value="15" >15</option>

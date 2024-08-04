@@ -23,7 +23,7 @@ function App() {
     <div className="flex flex-col min-h-screen hide-scrollbar">
       {isAuth ? (
         <>
-          <Navbar isPremium={isPremium} setPremium={setPremium} />
+          <Navbar isPremium={isPremium} setPremium={setPremium} isAuth={isAuth}  setIsAuth={setIsAuth} />
           <div className="flex-grow m-2 w-auto h-full bg-slate-100">
             <Routes>
               <Route path="/" element={<Main />} />

@@ -37,12 +37,12 @@ const SignUp = ({setIsAuth}) => {
             <span className='flex-1 xs:text-[12px] sm:text-[15px]'>Password</span>
             <input className='w-[70%] border-0 border-cyan-400 border-b-[1px] outline-none' onChange={(e)=>setPass(e.target.value)} />
         </div>
-        <div className='w-auto xs:p-1 xs:m-1  sm:p-2 sm:m-2 gap-2 flex items-center justify-center'>
+        <div className='w-auto xs:p-1 xs:m-1  sm:p-1 sm:m-1 xs:gap-2 sm:gap-5  flex items-center justify-center'>
             <button className='text-[14px] bg-cyan-300 p-[4px] rounded-sm text-white' onClick={handleLogin}>Sign-Up</button>
             <a href='/signin' className='border-0 border-b-[1px] text-[14px] p-1 border-blue-700'>Sign-In</a>
            
         </div>
-        <div className='w-auto xs:p-1 xs:m-1  sm:p-2 sm:m-2 gap-2 flex items-center justify-center'>
+        <div className='w-auto p-1 m-1 gap-2 flex items-center justify-center'>
         <a href='/forgot' className='border-0 border-b-[1px] text-[14px] p-1 border-blue-700'>Forgot Password</a>
        </div>
     </div>

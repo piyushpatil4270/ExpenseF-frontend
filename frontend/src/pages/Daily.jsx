@@ -6,6 +6,7 @@ import Daily_card from "../components/Daily_card";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Calender from "../components/Calender";
 import moment from "moment";
+import Food from "../utils/Food_Image.jpeg"
 
 const Income = () => {
   const [addExp, setaddExp] = useState(false);
@@ -77,7 +78,7 @@ const Income = () => {
     try {
       const userToken = localStorage.getItem("token");
       const res = await axios.post(
-        "https://www.expensetracker.kesug.com/expense/all",
+        "https://www.expensetracker.kesug.com/expense/getbyDay",
         {
           date: selectedDate,
           limit: itemsPerPage,
@@ -153,7 +154,9 @@ const Income = () => {
                 <Daily_card
                   title={expense.title}
                   description={expense.description}
+                  category={expense.category}
                 />
+                
 
                 <div className="flex gap-5 items-center">
                   <span className="mx-2 text-black xs:text-[12px] sm:text-[15px]">
@@ -266,7 +269,7 @@ const Income = () => {
       )}
       {!addExp && (
         <button
-          className="w-fit h-fit bg-cyan-300 flex items-center justify-center xs:p-[2px]  sm:p-[3px] text-white xs:text-[12px] sm:text-[14px]"
+          className="w-fit h-fit bg-[#6ed9e2]  flex items-center justify-center xs:p-[2px]  sm:p-[3px] text-white xs:text-[12px] sm:text-[14px]"
           onClick={() => setaddExp(true)}
         >
           Add Expense

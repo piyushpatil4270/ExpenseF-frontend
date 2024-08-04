@@ -6,11 +6,11 @@ const Detail_Box = ({premium, expenses }) => {
     <table className="w-full border-collapse table-auto">
       <thead>
         <tr>
-          <th className="p-2 border  text-black text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Title</th>
-          <th className="p-2 border text-black text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Description</th>
-          <th className="p-2 border text-black text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Amount</th>
-          <th className="p-2 border text-black text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Date</th>
-          <th className="p-2 border text-black text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Category</th>
+          <th className="p-2 border  text-white text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Title</th>
+          <th className="p-2 border text-white text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Description</th>
+          <th className="p-2 border text-white text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Amount</th>
+          <th className="p-2 border text-white text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Date</th>
+          <th className="p-2 border text-white text-center bg-[#6ed9e2] xs:text-[13px] sm:text-[15px]">Category</th>
         </tr>
       </thead>
       <tbody>

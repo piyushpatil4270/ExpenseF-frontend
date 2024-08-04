@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import html2Canvas from "html2canvas";
-import jsPdf from "jspdf";
+import jsPDF from "jspdf"
+import html2canvas from "html2canvas"
 import axios from "axios";
 import moment from "moment";
 import Detail_Box from "../components/Detail_Box";
@@ -10,28 +10,36 @@ const ExpenseTable = () => {
   const [monthlyStats, setMonthlyStats] = useState({});
   const [yearlyStats, setYearlyStats] = useState([]);
 
-  const tableRef1 = useRef();
-  const tableRef2 = useRef();
 
-  const downLoad1 = () => {
-    const input = tableRef1.current;
-    html2Canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPdf();
-      pdf.addImage(imgData, "PNG", 0, 0);
-      pdf.save(`monthly_expenses.pdf`);
-    });
-  };
 
-  const downLoad2 = () => {
-    const input = tableRef2.current;
-    html2Canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPdf();
-      pdf.addImage(imgData, "PNG", 0, 0);
-      pdf.save(`yearly_expenses.pdf`);
-    });
-  };
+
+
+ 
+      const handleDownloadPDF1 = () => {
+        const input = document.getElementById('table1'); 
+        // Specify the id of the element you want to convert to PDF
+        html2canvas(input).then((canvas) => {
+          const imgData = canvas.toDataURL('image/png');
+          const pdf = new jsPDF();
+          pdf.addImage(imgData, 'PNG', 0, 0);
+          pdf.save('downloaded-file.pdf'); 
+          // Specify the name of the downloaded PDF file
+        });
+      }
+  
+
+        const handleDownloadPDF2 = () => {
+          const input = document.getElementById('table2'); 
+         
+          html2canvas(input).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 0, 0);
+            pdf.save('downloaded-file.pdf'); 
+          });
+        }
+
+
 
   const getStats = async () => {
     try {
@@ -54,32 +62,32 @@ const ExpenseTable = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div ref={tableRef1}  className="w-[50%] flex   p-2  flex-col items-center justify-center">
+      <div   className="w-[50%] flex   p-2  flex-col items-center justify-center">
         <h2 className="p-2 xs:text-[13px] sm:text-[15px] font-semibold text-center">
           Monthly Expense Summary
         </h2>
-        <table  className="w-full flex flex-col items-center justify-center">
+        <table id="table1" className="w-full flex flex-col items-center justify-center">
           {Object.entries(monthlyStats).map(([month, expenses]) => (
             <div key={month} className="w-full flex flex-col items-center justify-center mb-4">
-              <span className="text-center xs:text=[8px] sm:text-[14px] m-1  font-semibold">{month}</span>
+              <span className="text-center xs:text=[8px] text-white sm:text-[14px] m-1  font-semibold">{month}</span>
               <Detail_Box premium={isPremium} expenses={expenses} />
             </div>
           ))}
         </table>
-        {isPremium && (
+        {(isPremium &&  monthlyStats) &&
           <button
             className="p-[2px] my-2 xs:text-[12px] sm:text-[15px] bg-green-500 text-white"
-            onClick={downLoad1}
+            onClick={handleDownloadPDF1}
           >
             Download
           </button>
-        )}
+        }
       </div>
       <div className="w-[50%] flex flex-col justify-center items-center p-2">
         <h2 className="p-2 xs:text-[13px] sm:text-[15px] font-semibold">
           Yearly Expense Summary
         </h2>
-        <table ref={tableRef2} className="w-full border-collapse table-auto">
+        <table id="table2" className="w-full border-collapse table-auto">
           <thead className="w-full">
             <tr className="bg-gray-200 w-full">
               <th className="p-2 border text-black bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
@@ -108,10 +116,10 @@ const ExpenseTable = () => {
             })}
           </tbody>
         </table>
-        {isPremium && (
+        {(isPremium && yearlyStats) && (
           <button
             className="p-[2px] my-2 xs:text-[12px] sm:text-[15px] bg-green-500 text-white"
-            onClick={downLoad2}
+            onClick={handleDownloadPDF2}
           >
             Download
           </button>
@@ -119,6 +127,7 @@ const ExpenseTable = () => {
       </div>
     </div>
   );
+        
 };
 
-export default ExpenseTable;
+export default ExpenseTable
