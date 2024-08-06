@@ -9,7 +9,7 @@ const Navbar = ({isPremium,setPremium,setIsAuth}) => {
   const checkUser=async()=>{
     try {
       const userToken=localStorage.getItem("token")
-      const res=await axios.get("http://www.expensetracker.kesug.com/premium/user",{headers:{"Authorization":userToken}})
+      const res=await axios.get("https://www.expensetracker.kesug.com/premium/user",{headers:{"Authorization":userToken}})
       setLoading(true)
       console.log(res.data)
       setLoading(false)
@@ -41,6 +41,7 @@ const Navbar = ({isPremium,setPremium,setIsAuth}) => {
           setIsAuth(false)
           localStorage.removeItem("token")
           setPremium(false)
+          localStorage.removeItem("premium")
           navigate("/")
          }}>Logout</button>
          </div>

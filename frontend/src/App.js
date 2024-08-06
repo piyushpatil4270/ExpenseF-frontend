@@ -31,7 +31,7 @@ function App() {
               <Route path="/yearly" element={<Yearly />} />
               <Route path="/premium" element={<Payment_form  isPremium={isPremium} setPremium={setPremium}/> } />
               <Route path="/stats" element={<Stats_Page/>} />
-              <Route path="/summary"  element={<Summary/>}  />
+              <Route path="/summary"  element={<Summary setPremium={setPremium} isPremium={isPremium}/>}  />
                
            <Route path="*" element={<Not_Found/>} />
 

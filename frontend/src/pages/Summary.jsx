@@ -5,8 +5,7 @@ import axios from "axios";
 import moment from "moment";
 import Detail_Box from "../components/Detail_Box";
 
-const ExpenseTable = () => {
-  const [isPremium, setPremium] = useState(false);
+const ExpenseTable = ({isPremium,setPremium}) => {
   const [monthlyStats, setMonthlyStats] = useState({});
   const [yearlyStats, setYearlyStats] = useState([]);
 
@@ -17,13 +16,12 @@ const ExpenseTable = () => {
  
       const handleDownloadPDF1 = () => {
         const input = document.getElementById('table1'); 
-        // Specify the id of the element you want to convert to PDF
         html2canvas(input).then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF();
           pdf.addImage(imgData, 'PNG', 0, 0);
           pdf.save('downloaded-file.pdf'); 
-          // Specify the name of the downloaded PDF file
+          
         });
       }
   
@@ -48,7 +46,6 @@ const ExpenseTable = () => {
         headers: { Authorization: userToken },
       });
       setMonthlyStats(res.data);
-      //setYearlyStats(res.data.Yearlyexpenses);
     } catch (error) {
       console.error(error);
     }
