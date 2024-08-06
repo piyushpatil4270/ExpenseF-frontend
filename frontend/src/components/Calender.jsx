@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import moment from "moment";
-
+import  DatePicker from "../components/Datepicker";
 const SlidingDatePicker = ({selectedDate,setSelectedDate}) => {
 
 
@@ -22,6 +22,7 @@ const SlidingDatePicker = ({selectedDate,setSelectedDate}) => {
                 handleNextDay()
                }
             }}>{'>'}</span>
+            <DatePicker selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
         </div>
     );
 };
