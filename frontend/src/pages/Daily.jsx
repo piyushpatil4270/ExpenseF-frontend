@@ -59,6 +59,7 @@ const Income = () => {
           headers: { Authorization: userToken },
         }
       );
+      console.log(res.data)
       fetchExpenses();
     } catch (error) {
       console.log(error);
@@ -107,7 +108,7 @@ const Income = () => {
   return (
     <div className="w-full h-full flex flex-col gap-4 mt-2 justify-center items-center hide-scrollbar">
       {/*showCal?<Calender onClick={()=>setShowCal(!showCal)}/>:<span className="text-black p-2" onClick={()=>setShowCal(!showCal)}>Choose Date</span>*/}
-      <div className="flex justify-center  items-center my-2 p-2 w-full">
+      <div className="flex justify-center  items-center my-2 p-1 w-full">
         <div className="flex justify-center items-center w-[80%] m-2">
         <Calender
           selectedDate={selectedDate}
@@ -137,15 +138,8 @@ const Income = () => {
         {/*</div>*/}
       </div>
       
-      <div className="flex flex-col items-center w-full px-4 py-4 gap-4">
-        <div className="w-full flex justify-between bg-slate-300">
-          <span className="m-1 text-black xs:text-[14px] sm:text-[18px]">
-            Total Expense:
-          </span>
-          <span className="m-1 text-black xs:text-[14px] text-[18px]">
-            ${totalAmt}
-          </span>
-        </div>
+      <div className="flex flex-col items-center w-full px-4 py-[2px] gap-4">
+      
         
         {data &&
           data?.map((expense) => {
@@ -171,7 +165,14 @@ const Income = () => {
               </div>
             );
           })}
-        {}
+        <div className="w-full flex justify-between bg-slate-300">
+          <span className="m-1 text-black xs:text-[14px] sm:text-[18px] ">
+            Total Expense:
+          </span>
+          <span className="m-1 text-black xs:text-[14px] text-[18px] ">
+            ${totalAmt}
+          </span>
+        </div>
       </div>
       {addExp && (
         <div className="hide-scrollbar max-w-[90%] md:w-[50%] lg:w-[30%] rounded-lg shadow-lg bg-white p-6 mx-auto  relative">
@@ -212,7 +213,7 @@ const Income = () => {
               <div className="flex items-center">
                 <span className="w-[25%] text-[14px] text-gray-700">Title</span>
                 <input
-                  className="flex-1 outline-none p-2 border border-gray-300 rounded-md"
+                  className="sm:flex-1 xs:w-[50%] outline-none p-2 border border-gray-300 rounded-md"
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
@@ -221,7 +222,7 @@ const Income = () => {
                   Details
                 </span>
                 <input
-                  className="flex-1 outline-none p-2 border border-gray-300 rounded-md"
+                  className="sm:flex-1 xs:w-[50%] outline-none p-2 border border-gray-300 rounded-md"
                   onChange={(e) => setDetails(e.target.value)}
                 />
               </div>
@@ -233,7 +234,7 @@ const Income = () => {
                   type="number"
                   min="0"
                   step={1}
-                  className="flex-1 outline-none p-2 border border-gray-300 rounded-md"
+                  className="sm:flex-1 xs:w-[50%] outline-none p-2 border border-gray-300 rounded-md"
                   onChange={(e) => setAmount(e.target.value)}
                 />
               </div>
@@ -242,7 +243,7 @@ const Income = () => {
                   Category
                 </span>
                 <select
-                  className="flex-1 outline-none p-2 border border-gray-300 rounded-md"
+                  className="sm:flex-1 xs:w-[50%] outline-none p-2 border border-gray-300 rounded-md"
                   onChange={(e) => {
                     console.log(e.target.value)
                     setCategory(e.target.value)
@@ -258,7 +259,7 @@ const Income = () => {
             </div>
             <div className="w-full flex justify-center mt-4">
               <button
-                className="bg-cyan-500 text-white px-4 py-2 rounded-md"
+                className="bg-cyan-500 text-white sm:px-4 xs:px-2 xs:py-1 xs:text-[12px] sm:text-[15px] sm:py-2 rounded-md"
                 onClick={handleExpense}
               >
                 Add

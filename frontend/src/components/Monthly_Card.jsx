@@ -2,7 +2,7 @@ import React from 'react';
 
 const Monthly_Card = ({ title, description, amount, date, category }) => {
   return (
-    <div className='xs:w-[70%] sm:w-[30%] h-fit flex flex-col bg-[#f5f4f4] p-4 rounded-lg shadow-lg'>
+    <div className='xs:w-[70%] sm:w-[30%] h-fit flex flex-col bg-white p-4 rounded-lg shadow-lg'>
       <div className="flex items-center justify-center">
       <span className='text-xs xs:text-[12px] sm:text-[14px] font-bold mb-2'>{date}</span>
       </div>

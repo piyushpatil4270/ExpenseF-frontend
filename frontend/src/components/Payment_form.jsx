@@ -18,7 +18,7 @@ const Payment_form = ({setPremium}) => {
     const handleSubmit=async(e)=>{
         e.preventDefault()
         try {
-            const response=await fetch("https://www.expensetracker.kesug.com/payu",{
+            const response=await fetch("https://www.expensetracker.kesug.com/premium/payu",{
                 method:"POST",
                 headers:{
                     'Content-Type':'application/json'
@@ -26,7 +26,7 @@ const Payment_form = ({setPremium}) => {
                 body:JSON.stringify({...formData,txnid:'unique_transaction_id_' + new Date().getTime() })
             })
             const payUdata=await response.json()
-            const payUResponse = await axios.post('https://www.expensetracker.kesug.com/payu_response', payUdata);
+            const payUResponse = await axios.post('https://www.expensetracker.kesug.com/premium/payu_response', payUdata);
             console.log("status",payUResponse.status)
             if(payUResponse.status===200){
               const userToken=localStorage.getItem("token")

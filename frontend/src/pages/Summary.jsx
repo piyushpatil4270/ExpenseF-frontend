@@ -41,14 +41,26 @@ const ExpenseTable = () => {
 
 
 
-  const getStats = async () => {
+  const getStatsMonthly = async () => {
     try {
       const userToken = localStorage.getItem("token");
-      const res = await axios.get("https://www.expensetracker.kesug.com/expense/getStat", {
+      const res = await axios.post("https://www.expensetracker.kesug.com/expense/getbyMonthGrouped",{date:new Date()}, {
         headers: { Authorization: userToken },
       });
-      setMonthlyStats(res.data.Montlyexpenses);
-      setYearlyStats(res.data.Yearlyexpenses);
+      setMonthlyStats(res.data);
+      //setYearlyStats(res.data.Yearlyexpenses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getStatsYearly = async () => {
+    try {
+      const userToken = localStorage.getItem("token");
+      const res = await axios.post("https://www.expensetracker.kesug.com/expense/getbyYear",{date:new Date()}, {
+        headers: { Authorization: userToken },
+      });
+      setYearlyStats(res.data.expenses);
+      //setYearlyStats(res.data.Yearlyexpenses);
     } catch (error) {
       console.error(error);
     }
@@ -57,7 +69,8 @@ const ExpenseTable = () => {
   useEffect(() => {
     const premiumUser = localStorage.getItem("premium");
     if (premiumUser) setPremium(true);
-    getStats();
+    getStatsMonthly();
+    getStatsYearly()
   }, []);
 
   return (
@@ -90,10 +103,10 @@ const ExpenseTable = () => {
         <table id="table2" className="w-full border-collapse table-auto">
           <thead className="w-full">
             <tr className="bg-gray-200 w-full">
-              <th className="p-2 border text-black bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
+              <th className="p-2 border text-white bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
                 Month
               </th>
-              <th className="p-2 border text-black bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
+              <th className="p-2 border text-white bg-[#6ed9e2] text-center xs:text-[13px] sm:text-[15px]">
                 Expenses
               </th>
             </tr>
@@ -105,10 +118,10 @@ const ExpenseTable = () => {
               const year = monthYear.format("YYYY");
               return (
                 <tr key={expense.month} className="even:bg-gray-100 w-full">
-                  <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">
+                  <td className="p-2 border bg-white text-center xs:text-[10px] sm:text-[13px]">
                     {monthName} {year}
                   </td>
-                  <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">
+                  <td className="p-2 border bg-white text-center xs:text-[10px] sm:text-[13px]">
                     {expense.totalAmount}
                   </td>
                 </tr>

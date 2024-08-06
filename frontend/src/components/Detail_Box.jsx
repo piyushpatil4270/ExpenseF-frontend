@@ -16,13 +16,13 @@ const Detail_Box = ({premium, expenses }) => {
       <tbody>
         {expenses.map(expense => (
           <tr key={expense.id}>
-            <td className="p-2 border text-center  xs:text-[10px] sm:text-[13px]">{expense.title}</td>
-            <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">{expense.description}</td>
-            <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">{expense.amount}</td>
-            <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">
+            <td className="p-2 border text-center bg-white  xs:text-[10px] sm:text-[13px]">{expense.title}</td>
+            <td className="p-2 border text-center bg-white xs:text-[10px] sm:text-[13px]">{expense.description}</td>
+            <td className="p-2 border text-center bg-white xs:text-[10px] sm:text-[13px]">{expense.amount}</td>
+            <td className="p-2 border text-center bg-white xs:text-[10px] sm:text-[13px]">
               {moment(expense.date).format('MMMM Do, YYYY')}
             </td>
-            <td className="p-2 border text-center xs:text-[10px] sm:text-[13px]">{expense.category}</td>
+            <td className="p-2 border text-center bg-white xs:text-[10px] sm:text-[13px]">{expense.category}</td>
           </tr>
         ))}
       </tbody>
